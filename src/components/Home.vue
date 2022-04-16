@@ -45,22 +45,43 @@
     </div>
 </div>
 
-<div class="container px-4" id='card'>
-    <div class="row gx-5">
-        <div class="col" v-for='shw in shows' :key="shw.score" style="margin-bottom:2%">
-            <div v-if="shw.rating.average>8">
-                <div class="card" style="width: 18rem;" v-if="shw.image!= null">
+
+<!-- <div class="container" id='card'>
+    <div class="row">
+        <div class="col" v-for='shw in shows' :key="shw.id" style="margin-bottom:2%">
+            <div >
+                <MovieCard v-if="shw.image!= null"
+                    :img="shw.image.medium" 
+                    :name="shw.name"
+                    :id="shw.id"
+                    :description="shw.summary"
+                    :rating="shw.rating.average"
+                    :runtime="card.runtime"
+                />
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="container" id='card'>
+    <div class="row gx-5
+    ">
+        <div class="col gx-1" v-for='shw in shows' :key="shw.id" style="margin-bottom:2%">
+            <div v-if="shw.status=='Running'">
+                <div class="card" style="width: 15rem;" v-if="shw.image!= null">
                     <img :src="shw.image.medium" class="card-img-top" alt="picture">
                     <div class="card-body">
                         <h5 class="card-title">{{shw.name}}</h5>
-                        <p class="card-text">{{shw.rating}}</p>
-                        <a class="btn btn-primary" @click='info(shw.id)'>More Information</a>
+                        <p class="card-text">Rating : {{shw.rating.average}}</p>
+                        <p class="card-text">Status : {{shw.status}}</p>
+                        <!-- <a class="btn btn-primary" @click='info(shw.show.id)'>More Information</a> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 </template>
 
 <script>
@@ -92,13 +113,19 @@ export default {
                 console.log('error', err)
             });
         },
+        info(id) {
+            console.log(id);
+            this.$router.push({
+                name: "ShowInfo",
+                params: {
+                    data: id
+                }
+            })
+        }
     }
 }
 </script>
 
 <style scoped>
-#size {
-    height: 4px;
-    width: 1200px;
-}
+
 </style>

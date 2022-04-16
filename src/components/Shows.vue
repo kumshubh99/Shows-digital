@@ -1,22 +1,21 @@
 <template>
 <div v-if='shows.length==0'>
-    <h1>No Movies Found</h1>
+    <h1>No Shows Found</h1>
 </div>
 <div class="container px-4" id='card'>
-    <div class="row gx-5">
+    <div class="row gx-2">
         <div class="col" v-for='shw in shows' :key="shw.score" style="margin-bottom:2%">
-            <div class="card" style="width: 18rem;" v-if="shw.show.image!= null">
+            <div class="card" style="width: 15rem;" v-if="shw.show.image!= null">
                 <div>
                     <img :src="shw.show.image.medium" class="card-img-top" alt="picture">
                     <div class="card-body">
                         <h5 class="card-title">{{shw.show.name}}</h5>
-                        <p class="card-text">{{shw.show.rating}}</p>
+                        <p class="card-text" v-if="shw.show.rating.average!= null">Rating: {{shw.show.rating.average}}</p>
                         <a class="btn btn-primary" @click='info(shw.show.id)'>More Information</a>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </template>

@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../components/Home.vue';
 import Shows from "../components/Shows";
 import ShowInfo from "../components/ShowInfo";
-
 const routes= [
     {
         path: '/',
@@ -18,7 +17,7 @@ const routes= [
         path: '/showinfo/:data',
         name: 'ShowInfo',
         component: ShowInfo
-    },
+    }
    
    
 ];

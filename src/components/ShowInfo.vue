@@ -2,16 +2,16 @@
 <div class="container-fluid" id="viewcourses">
   <div class="row" >
     <div class="col-sm" v-if="show!=null">
-      <img v-bind:src="show.image.medium" style="width:100%; height: 500px" >
+      <img v-bind:src="show.image.medium" style="width:50%; height: 100%" >
     </div>
     <div class="col-sm">
       <div class="viewcourses">
-        <h1 style="text-align: center; " >{{show.name}}</h1>
-       Rating-{{show.rating.average}} <br>
-       Premiered-{{show.premiered}}<br>
-       Official Site-{{show.officialSite}}<br>
-       Genre-{{show.genres}}<br>
-       Summary-{{show.summary}}
+        <h1 style="text-align: center; ">{{show.name}}</h1>
+       Rating: {{show.rating.average}} <br>
+       Premiered: {{show.premiered}}<br>
+       Official Site: {{show.officialSite}}<br>
+       Genre: {{show.genres}}<br>
+       Summary: {{show.summary}}
       </div>
     </div>
   </div>
